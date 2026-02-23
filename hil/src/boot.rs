@@ -39,7 +39,11 @@ pub async fn reboot(
         std::thread::sleep(Duration::from_secs(4));
 
         info!("Turning on");
-        let mode = if recovery { BootMode::Recovery } else { BootMode::Normal };
+        let mode = if recovery {
+            BootMode::Recovery
+        } else {
+            BootMode::Normal
+        };
         controller.set_boot_mode(mode)?;
         controller.turn_on()?;
 
